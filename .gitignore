@@ -1,0 +1,6 @@
+*.swp
+local_settings.py
+*.pyc
+*.log
+*.db
+*.bak
