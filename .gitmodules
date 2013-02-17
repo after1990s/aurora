@@ -1,0 +1,8 @@
+[submodule "vendors/galleria"]
+	path = vendors/galleria
+	url = https://github.com/aino/galleria
+	ignore = untracked
+[submodule "vendors/bootstrap"]
+	path = vendors/bootstrap
+	url = https://github.com/twitter/bootstrap
+	ignore = untracked

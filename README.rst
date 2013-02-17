@@ -18,6 +18,7 @@ Requirements
 * Django
 * PIL
 * Git
+* Docutils
 
 Suggestion
 ----------
