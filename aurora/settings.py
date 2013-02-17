@@ -115,6 +115,12 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'aurora',
+    'gallery',
+    'potd',
+    'postcard',
+    'storage',
+    'manage',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

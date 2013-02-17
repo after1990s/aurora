@@ -8,8 +8,9 @@ from django.conf import settings
 from django.utils.cache import patch_vary_headers
 
 AURORA_URLS_MAPPING = {
-    'AURORA_POTD': 'potd.urls',
-    'AURORA_GALLERY': 'gallery.urls',
+    'AURORA_POTD':      'potd.urls',
+    'AURORA_GALLERY':   'gallery.urls',
+    'AURORA_MANAGE':    'manage.urls',
 }
 
 class AuroraAppDispatcherMiddleware:

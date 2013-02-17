@@ -2,7 +2,7 @@
 # Copyright 2013 by Weisi Dai <multiple1902@gmail.com>
 # Released under MIT License
 #
-# Models for aurora project.
+# Shared models for aurora project.
 
 from django.db import models
 from django.conf import settings
@@ -10,7 +10,7 @@ from django.conf import settings
 class Photo(models.Model):
 
     title       = models.CharField(max_length = 255, blank = True)
-    description = models.TextField(blank = True)
+    description = models.TextField(blank = True) # in reStructuredText form
     datetime    = models.DateTimeField()
     license     = models.ForeignKey('License', default = 1)
     tags        = models.ManyToManyField('Tag', blank = True)
@@ -23,8 +23,11 @@ class Photo(models.Model):
     def __unicode__(self):
         if len(self.title):
             return "%s" % (self.title)
-        else
+        else:
             return "Photo %s" % (self.id)
+
+    def descriptionHtml(self):
+        return self.description # TODO: change to docutils later
 
 class License(models.Model):
 
@@ -44,10 +47,5 @@ class Tag(models.Model):
 class Collection(models.Model):
 
     title       = models.CharField(max_length = 255)
+    urlPart     = models.CharField(max_length = 255)
     photos      = models.TextField()    # comma separated id's
-
-admin.site.register(Photo)
-admin.site.register(License)
-admin.site.register(Tag)
-admin.site.register(Collection)
-
