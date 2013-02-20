@@ -29,6 +29,7 @@ def create_new_photo_storage(photo, f):
         pass
 
     photo.hush = aurora_hush(photo)
+    photo.width, photo.height = Image.open(path_).size
     photo.save()
 
     make_symlink_photo(photo)
