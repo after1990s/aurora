@@ -1,0 +1,41 @@
+{% extends "gallery/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<!--
+<div id="loading">
+    <div class="alert">
+        <strong>Loading...</strong>
+    </div>
+</div>
+-->
+<div class="row-fluid" id="waterfall">
+    <ul id="tiles">
+      {% for photo in photos %}
+      <li>
+          <a href="{{ AURORA_GALLERY_URL }}photo/{{ photo.id }}">
+              <p><img src="{{ AURORA_MEDIA_PUB_URL }}{{ photo.hush }}.{{ photo.extension }}{{ AURORA_POSTFIX_GALLERY_THUMB }}" style="width: {{ AURORA_THUMB_WIDTH }}px; height: {{ photo.thumb_height }}px;"{% if photo.title %} title="{{ photo.title|truncatechars:100 }}"{% endif %}></img></p>
+          </a>
+          <p>{{ photo.testProperty }}</p>
+             
+      </li>
+      {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
+{% block footer_script %}
+    <script src="{% static "js/jquery.wookmark.min.js" %}"></script>
+
+    <script type="text/javascript">
+        //$(document).ready(new function() {
+            //$("div#loading").hide();
+            var options = {
+                autoResize: true,
+                container: $("#waterfall"),
+                offset: 0,
+            };
+            $("#tiles li").wookmark(options);
+        //});
+    </script>
+{% endblock %}

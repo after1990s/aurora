@@ -1,0 +1,37 @@
+{% extends "manage/base.html" %}
+{% load staticfiles %}
+
+{% block page_title %}Listing photos - {% endblock %}
+
+{% block sidebar %}
+{% include "manage/photo-sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="span9">
+  <div class="row-fluid">
+    {% for photo in photos %}
+    <div class="span3">
+        <p><a href="{{ AURORA_GALLERY_URL }}photo/{{ photo.id }}"><img src="{{ AURORA_MEDIA_PUB_URL }}{{ photo.hush }}.{{ photo.extension }}{{ AURORA_POSTFIX_GALLERY_THUMB }}" style="width: {{ AURORA_THUMB_WIDTH }}px; height: {{ photo.thumb_height }}px;"></img></a></p>
+        <h3>{% if photo.title %}{{ photo.title|truncatechars:20 }}{% else %}{% endif %}</h3>
+        <p>{{ photo.description|truncatechars:50 }}</p>
+        <p><a class="btn" href="/photo/edit/{{ photo.id }}">Edit &raquo;</a></p>
+    </div><!--/span-->
+    {% if forloop.counter|divisibleby:4 %}</div><hr><div class="row-fluid">{% endif %}
+    {% endfor %}
+  </div><!--/row-->
+    <ul class="pager">
+        {% if photos.has_previous %}
+        <li class="previous">
+            <a href="{{ url_prefix }}/page/{{ photos.previous_page_number }}">Previous</a>
+        </li>
+        {% endif %}
+        {% if photos.has_next %}
+        <li class="next">
+            <a href="{{ url_prefix }}/page/{{ photos.next_page_number }}">Next</a>
+        </li>
+        {% endif %}
+    </ul>
+</div><!--/span-->
+
+{% endblock %}

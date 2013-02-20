@@ -7,8 +7,16 @@
 
 from django.conf.urls import patterns, include, url
 
-urlpatterns = patterns('',
+urlpatterns = patterns('manage',
 
-    url(r'^$', 'manage.views.homepage'),
+    url(r'^$', 'views.homepage'),
+
+    url(r'^photo$', 'photo.photo_all'),
+    url(r'^photo/page/(?P<page>\d+)$', 'photo.photo_all'),
+
+    url(r'^photo/add$', 'photo.photo_add'),
+    url(r'^photo/edit/(?P<photo_id>\d+)$', 'photo.photo_edit'),
+
+    url(r'^login$', 'login.login'),
 
 )

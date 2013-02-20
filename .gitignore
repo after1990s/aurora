@@ -6,3 +6,6 @@ local_settings.py
 *.bak
 vendors/
 local_*.py
+media/
+pub/
+local_*.sh

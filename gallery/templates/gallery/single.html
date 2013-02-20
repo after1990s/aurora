@@ -1,0 +1,19 @@
+{% extends "gallery/base.html" %}
+{% load staticfiles %}
+
+{% block page_title %}{% if photo.title %}{{ photo.title }} - {% endif %}{% endblock %}{{ AURORA_SITE_NAME }}
+
+{% block content %}
+<div class="row-fluid">
+    <div class="span12">
+      {% if photo.title %}<h2 class="photo_title">{{ photo.title }}</h2>{% endif %}
+      <p class="photo">
+          <a href="{{ AURORA_MEDIA_PUB_URL }}{{ photo.hush }}.{{ photo.extension }}{{ AURORA_POSTFIX_GALLERY_DISPLAY }}">
+              <img src="{{ AURORA_MEDIA_PUB_URL }}{{ photo.hush }}.{{ photo.extension }}{{ AURORA_POSTFIX_GALLERY_DISPLAY }}"></img>
+          </a>
+      </p>
+      {% if photo.description %}<div class="well"><p>{{ photo.description }}</p></div>{% endif %}
+    </div>
+</div>
+{% endblock %}
+

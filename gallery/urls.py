@@ -7,8 +7,9 @@
 
 from django.conf.urls import patterns, include, url
 
-urlpatterns = patterns('',
+urlpatterns = patterns('gallery',
 
-    url(r'^$', 'gallery.views.homepage'),
+    url(r'^$', 'views.homepage'),
+    url(r'^photo/(?P<photo_id>\d+)$', 'views.single'),
 
 )

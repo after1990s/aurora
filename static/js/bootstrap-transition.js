@@ -1,0 +1,1 @@
+../../vendors/bootstrap/js/bootstrap-transition.js

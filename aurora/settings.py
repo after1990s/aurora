@@ -5,6 +5,8 @@
 #
 # Django settings for aurora project.
 
+from django.conf import global_settings
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -161,3 +163,29 @@ LOGGING = {
         },
     }
 }
+
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    'aurora.context_processor.site',
+)
+
+AURORA_MEDIA_PUB_ROOT   = './pub'
+AURORA_MEDIA_ROOT_REF   = '../media'
+
+AURORA_SITE_NAME    = "Aurora"
+AURORA_PASSWORD     = "1234567890"
+AURORA_GALLERY_URL  = ""
+AURORA_HUSH_SALT    = "Change Me"
+AURORA_HUSH_LENGTH  = 16    # <= 128
+AURORA_MANAGE_PAGE_SIZE = 18
+
+AURORA_POSTFIX_POTD = ""
+AURORA_POSTFIX_GALLERY_THUMB = ""
+AURORA_POSTFIX_GALLERY_DISPLAY = ""
+AURORA_POSTFIX_SNS = ""
+AURORA_THUMB_WIDTH = 240
+
+AURORA_MANAGE_PAGE_SIZE = 6
+AURORA_GALLERY_PAGE_SIZE = 10
+AURORA_POTD_PAGE_SIZE = 7
+
+AURORA_FOOTER = "Copyright."

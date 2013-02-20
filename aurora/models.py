@@ -14,11 +14,19 @@ class Photo(models.Model):
     datetime    = models.DateTimeField()
     license     = models.ForeignKey('License', default = 1)
     tags        = models.ManyToManyField('Tag', blank = True)
-    #defaultImage= models.ForeignKey('storage.PhotoStorage')
     published   = models.BooleanField(default = True)
     featured    = models.BooleanField(default = False)
     notes       = models.TextField(blank = True)
     uuid        = models.CharField(max_length = 100)
+
+    hush        = models.CharField(max_length = 128) # 128 for sha512 digest
+    extension   = models.CharField(max_length = 10)
+
+    height      = models.IntegerField(default=0)
+    width       = models.IntegerField(default=0)
+
+    class Meta:
+        ordering = ["-id"]
 
     def __unicode__(self):
         if len(self.title):
@@ -26,8 +34,11 @@ class Photo(models.Model):
         else:
             return "Photo %s" % (self.id)
 
-    def descriptionHtml(self):
+    def description_html(self):
         return self.description # TODO: change to docutils later
+
+    def thumb_height(self):
+        return self.height * settings.AURORA_THUMB_WIDTH / self.width
 
 class License(models.Model):
 

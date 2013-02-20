@@ -6,3 +6,7 @@
 	path = vendors/bootstrap
 	url = https://github.com/twitter/bootstrap
 	ignore = untracked
+[submodule "vendors/Wookmark-jQuery"]
+	path = vendors/Wookmark-jQuery
+	url = https://github.com/GBKS/Wookmark-jQuery
+	ignore = untracked

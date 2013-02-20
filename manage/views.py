@@ -5,5 +5,12 @@
 
 from django.shortcuts import render
 
+from login import login_required
+
+@login_required
 def homepage(request):
-    pass
+    return render(request, 'manage/homepage.html', {
+            'page_title': 'Home',
+            'NAV_HOME_CLASS': 'active',
+        }
+        )
