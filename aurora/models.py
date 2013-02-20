@@ -40,6 +40,18 @@ class Photo(models.Model):
     def thumb_height(self):
         return self.height * settings.AURORA_THUMB_WIDTH / self.width
 
+    def set_tags(self, tag_list):
+        for tag in self.tags.all():
+            self.tags.remove(tag)
+        for str_tag in tag_list:
+            try:
+                tag = Tag.objects.get(title=str_tag)
+            except:
+                tag = Tag(title=str_tag)
+                tag.save()
+            self.tags.add(tag)
+        self.save()
+
 class License(models.Model):
 
     title       = models.CharField(max_length = 100)

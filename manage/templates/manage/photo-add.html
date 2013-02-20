@@ -70,6 +70,17 @@
               </div>
           </div>
 
+          <div class="control-group">
+              <label class="control-label">Tags</label>
+              <div class="controls">
+                  <ul id="ul_tags" class="input-block-level">
+                  {% for tag in tags %}
+                      <li>{{ tag.title }}</li>
+                  {% endfor %}
+                  </ul>
+              </div>
+          </div>
+
           <div class="form-actions">
               <button class="btn btn-primary" type="submit">Submit</button>
           </div>
@@ -77,4 +88,16 @@
   </div><!--/row-->
 </div><!--/span-->
 
+
+{% endblock %}
+
+{% block footer_scripts %}
+<script>
+    $(document).ready(function() {
+        $('ul#ul_tags').tagit({
+            field: 'tags',
+            tags: [{{ all_tags|safe }}],
+        });
+    });
+</script>
 {% endblock %}

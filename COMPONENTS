@@ -16,4 +16,12 @@ Aurora includes the following components:
 
     http://galleria.io/
 
+* jquery-tagit: JQuery plugin for auto completion of tags, by Richard Poole
+
+    https://github.com/richardpoole/jquery-tagit
+
+    forked from Nico Rehwaldt's jquery-tagit: https://github.com/Nikku/jquery-tagit
+
+    jquery-tagit uses the MIT License (LICENSE).
+
 Aurora itself is released under MIT License (LICENSE).

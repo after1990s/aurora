@@ -12,7 +12,14 @@
               <img src="{{ AURORA_MEDIA_PUB_URL }}{{ photo.hush }}.{{ photo.extension }}{{ AURORA_POSTFIX_GALLERY_DISPLAY }}"></img>
           </a>
       </p>
-      {% if photo.description %}<div class="well"><p>{{ photo.description }}</p></div>{% endif %}
+      {% if photo.description %}<p>{{ photo.description }}</p>{% endif %}
+      {% if photo.tags.all|length %}
+      <div class="btn-group" id="tags">
+          {% for tag in photo.tags.all %}
+              <button class="btn">{{ tag.title }}</button>
+          {% endfor %}
+      </div>
+      {% endif %}
     </div>
 </div>
 {% endblock %}

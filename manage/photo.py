@@ -9,7 +9,7 @@ from django.conf import settings
 
 from storage.api import create_new_photo_storage
 
-from aurora.models import Photo, License
+from aurora.models import Photo, License, Tag
 
 from login import login_required
 from forms import PhotoForm, EditPhotoForm
@@ -56,6 +56,8 @@ def photo_add(request):
             p.extension = os.path.splitext(form.cleaned_data['photo'].name)[1][1:]
             p.save()
 
+            p.set_tags(request.POST('tags'))
+
             create_new_photo_storage(photo=p, 
                 f=request.FILES['photo'])
             
@@ -69,11 +71,13 @@ def photo_add(request):
             'form': form,
             'errmsg': errmsg,
             'succ': succ,
+            'all_tags': get_all_tags(),
         }
         )
 
 @login_required
 def photo_edit(request, photo_id):
+    print "POST: %s" % request.POST
     photo = Photo.objects.get(id=photo_id)
     form = EditPhotoForm()
     errmsg = ""
@@ -91,6 +95,8 @@ def photo_edit(request, photo_id):
             p.featured = form.cleaned_data['featured']
             p.save()
 
+            p.set_tags(request.POST.getlist('tags'))
+
             if 'photo' in request.FILES.keys():
                 p.extension = os.path.splitext(form.cleaned_data['photo'].name)[1][1:]
                 create_new_photo_storage(photo=p, 
@@ -106,11 +112,19 @@ def photo_edit(request, photo_id):
         form.fields["license"].initial = photo.license
         form.fields["published"].initial = photo.published
         form.fields["featured"].initial = photo.featured
+    
 
     return render(request, 'manage/photo-edit.html', {
             'NAV_PHOTO_CLASS': 'active',
             'form': form,
             'errmsg': errmsg,
             'succ': succ,
+            'tags': photo.tags.all(),
+            'all_tags': get_all_tags(),
         }
         )
+
+def get_all_tags():
+    tags = Tag.objects.all()
+    str_tags = map(lambda x: '"%s"' % x, tags)
+    return ", ".join(str_tags)

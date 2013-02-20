@@ -10,6 +10,7 @@
 
     <!-- Le styles -->
     <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "css/tagit.css" %}" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -26,6 +27,10 @@
           padding-left: 5px;
           padding-right: 5px;
         }
+      }
+
+      .btn-tag {
+          margin-top: 3px;
       }
     </style>
     <link href="{% static "css/bootstrap-responsive.css" %}" rel="stylesheet">
@@ -160,6 +165,10 @@
     <script src="{% static "js/bootstrap-typeahead.js" %}"></script>
     <script src="{% static "js/contrib-bootstrap-select.js" %}"></script>
     <script src="{% static "js/contrib-bootstrap-filepicker.js" %}"></script>
+    <script src="{% static "js/contrib-jquery.tagit.js" %}"></script>
+
+    {% block footer_scripts %}
+    {% endblock %}
 
   </body>
 </html>

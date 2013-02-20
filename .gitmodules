@@ -10,3 +10,7 @@
 	path = vendors/Wookmark-jQuery
 	url = https://github.com/GBKS/Wookmark-jQuery
 	ignore = untracked
+[submodule "vendors/jquery-tagit"]
+	path = vendors/jquery-tagit
+	url = https://github.com/richardpoole/jquery-tagit.git
+	ignore = untracked

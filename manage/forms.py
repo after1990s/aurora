@@ -4,7 +4,7 @@
 #
 from django import forms
 
-from aurora.models import Photo, License
+from aurora.models import Photo, License, Tag
 
 class LoginForm(forms.Form):
     Password = forms.CharField(widget=forms.PasswordInput(
