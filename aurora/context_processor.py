@@ -19,4 +19,6 @@ def site(request):
             'AURORA_THUMB_WIDTH': settings.AURORA_THUMB_WIDTH,
 
             'AURORA_FOOTER': settings.AURORA_FOOTER,
+            'AURORA_GA_POTD': settings.AURORA_GA_POTD,
+            'AURORA_GA_GALLERY': settings.AURORA_GA_GALLERY,
            }
