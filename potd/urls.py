@@ -9,6 +9,6 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
 
-    url(r'^$', 'potd.views.potd_homepage'),
+    url(r'^$', 'potd.views.homepage'),
 
 )

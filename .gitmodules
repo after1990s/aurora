@@ -14,3 +14,6 @@
 	path = vendors/jquery-tagit
 	url = https://github.com/richardpoole/jquery-tagit.git
 	ignore = untracked
+[submodule "vendors/supersized"]
+	path = vendors/supersized
+	url = https://github.com/buildinternet/supersized

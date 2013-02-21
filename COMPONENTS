@@ -24,4 +24,10 @@ Aurora includes the following components:
 
     jquery-tagit uses the MIT License (LICENSE).
 
+* supersized: Full screen background slideshow plugin for jQuery, by Build Internet
+
+    https://github.com/buildinternet/supersized
+
+    supersized uses the MIT License (LICENSE) or GPL.
+
 Aurora itself is released under MIT License (LICENSE).
