@@ -51,7 +51,7 @@
                 thumbnail_navigation    :   0,			// Thumbnail navigation
                 slides 					:  	[			// Slideshow Images
                 {% for photo in photos %}
-                    {image: '{{ AURORA_MEDIA_PUB_URL }}{{ photo.hush }}.{{ photo.extension }}{{ AURORA_POSTFIX_GALLERY_POTD }}',
+                    {image: '{{ AURORA_MEDIA_PUB_URL }}{{ photo.hush }}.{{ photo.extension }}{{ AURORA_POSTFIX_POTD }}',
                      title: '{{ photo.title }}',
                      thumb: '{{ AURORA_MEDIA_PUB_URL }}{{ photo.hush }}.{{ photo.extension }}{{ AURORA_POSTFIX_GALLERY_THUMB }}',
                      url: '{{ AURORA_GALLERY_URL }}photo/{{ photo.id }}'
