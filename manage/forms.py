@@ -45,6 +45,17 @@ class PhotoForm(forms.Form):
                     required=False,
     )
     photo = forms.ImageField()
+    notes = forms.CharField(
+                required=False,
+                widget=forms.Textarea(
+                           attrs={'class': 'input-block-level',
+                                  'rows': '2',
+    }))
+    postcard = forms.IntegerField(
+                   initial=0,
+                   required=True,
+                   widget=forms.TextInput(attrs={'class': 'input-block-level',
+    }))
 
 
 class EditPhotoForm(PhotoForm):

@@ -17,6 +17,8 @@ urlpatterns = patterns('manage',
     url(r'^photo/add$', 'photo.photo_add'),
     url(r'^photo/edit/(?P<photo_id>\d+)$', 'photo.photo_edit'),
 
+    url(r'^api/postcard/mark-as-sent/(?P<postcardrequest_id>\d+)$', 'photo.postcard_mark_as_sent'),
+
     url(r'^login$', 'login.login'),
 
 )

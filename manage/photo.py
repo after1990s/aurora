@@ -3,6 +3,7 @@
 # Released under MIT License
 #
 
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
@@ -13,6 +14,7 @@ from aurora.models import Photo, License, Tag
 
 from login import login_required
 from forms import PhotoForm, EditPhotoForm
+from postcard.models import PostcardRequest
 
 import datetime
 import uuid
@@ -54,6 +56,8 @@ def photo_add(request):
             p.published = form.cleaned_data['published']
             p.featured = form.cleaned_data['featured']
             p.extension = os.path.splitext(form.cleaned_data['photo'].name)[1][1:]
+            p.notes = form.cleaned_data['notes']
+            p.postcard = form.cleaned_data['postcard']
             p.save()
 
             p.set_tags(request.POST.getlist('tags'))
@@ -93,6 +97,8 @@ def photo_edit(request, photo_id):
             p.license = form.cleaned_data['license']
             p.published = form.cleaned_data['published']
             p.featured = form.cleaned_data['featured']
+            p.notes = form.cleaned_data['notes']
+            p.postcard = form.cleaned_data['postcard']
             p.save()
 
             p.set_tags(request.POST.getlist('tags'))
@@ -112,6 +118,8 @@ def photo_edit(request, photo_id):
         form.fields["license"].initial = photo.license
         form.fields["published"].initial = photo.published
         form.fields["featured"].initial = photo.featured
+        form.fields["notes"].initial = photo.notes
+        form.fields["postcard"].initial = photo.postcard
     
 
     return render(request, 'manage/photo-edit.html', {
@@ -128,3 +136,11 @@ def get_all_tags():
     tags = Tag.objects.all()
     str_tags = map(lambda x: '"%s"' % x, tags)
     return ", ".join(str_tags)
+
+
+@login_required
+def postcard_mark_as_sent(request, postcardrequest_id):
+    postcardrequest = PostcardRequest.objects.get(id=postcardrequest_id)
+    postcardrequest.sent = True
+    postcardrequest.save()
+    return HttpResponseRedirect('/')

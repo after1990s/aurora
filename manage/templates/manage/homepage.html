@@ -10,3 +10,44 @@
   </div><!--/.well -->
 </div><!--/span-->
 {% endblock %}
+
+{% block content %}
+<div class="span9">
+  <div class="row-fluid">
+      <h2>{% block h2 %}{% if postcardrequests|length %}{{ postcardrequests|length }} postcard request(s){% else %}No postcard requests.{% endif %}{% endblock %}</h2>
+      <hr>
+  </div>
+  {% if postcardrequests|length %}
+      {% for pr in postcardrequests %}
+      <div class="row-fluid">
+          <div class="span4">
+              <div class="well">
+                <p class="photo-pr">
+                <a href="{{ AURORA_GALLERY_URL }}photo/{{ pr.photo.id }}"><img src="{{ AURORA_MEDIA_PUB_URL }}{{ pr.photo.hush }}.{{ pr.photo.extension }}{{ AURORA_POSTFIX_GALLERY_THUMB }}" style="width: {{ AURORA_THUMB_WIDTH }}px; height: {{ pr.photo.thumb_height }}px;"{% if pr.photo.title %} title="{{ pr.photo.title|truncatechars:100 }}"{% endif %}></img></a>
+                </p>
+              </div>
+          </div>
+          <div class="span6">
+            <h3><a href="{{ AURORA_GALLERY_URL }}photo/{{ pr.photo.id }}">Photo {{ pr.photo.id }}{% if pr.photo.title %}：{{ pr.photo.title }}{% endif %}</a></h3>
+            <pre>{% if pr.name %}name: {{ pr.name }}
+{% endif %}address: {{ pr.address }}
+{% if pr.contact %}contact: {{ pr.contact }}
+{% endif %}{% if pr.comment %}comment: {{ pr.comment }}
+{% endif %}</pre>
+            {% if pr.photo.notes %}
+                {{ pr.photo.notes }}
+            {% endif %}
+          </div>
+          <div class="span2">
+              <a href="/api/postcard/mark-as-sent/{{ pr.id }}"><button class="btn btn-warning">Mark as Sent</button></a>
+          </div>
+      </div>
+      <div class="row-fluid">
+        {% if forloop.last %}{% else %}<hr>{% endif %}
+      </div><!--/row-->
+      {% endfor %}
+  {% endif %}
+</div><!--/span-->
+
+
+{% endblock %}

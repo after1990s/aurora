@@ -4,11 +4,6 @@
 #
 
 from django.db import models
-
-class PostcardStock(models.Model):
-
-    photo       = models.ForeignKey('aurora.Photo')
-    count       = models.IntegerField(default = 0)
     
 class PostcardRequest(models.Model):
 
@@ -18,3 +13,4 @@ class PostcardRequest(models.Model):
     contact     = models.TextField(blank = True)
     comment     = models.TextField(blank = True)
     sent        = models.BooleanField(default = False)
+

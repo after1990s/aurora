@@ -1,0 +1,21 @@
+{% extends "gallery/base.html" %}
+
+{% block page_title %}索取明信片{% if photo.title %}：{{ photo.title }} - {% endif %}{% endblock %}{{ AURORA_SITE_NAME }}
+
+{% block content %}
+<div class="row-fluid">
+    <div class="span3">
+        <div class="well">
+          <p class="photo">
+            <img src="{{ AURORA_MEDIA_PUB_URL }}{{ photo.hush }}.{{ photo.extension }}{{ AURORA_POSTFIX_GALLERY_THUMB }}" style="width: {{ AURORA_THUMB_WIDTH }}px; height: {{ photo.thumb_height }}px;"{% if photo.title %} title="{{ photo.title|truncatechars:100 }}"{% endif %}></img>
+          </p>
+        </div>
+    </div>
+    <div class="span9">
+        <h2>成功啦</h2>
+        <hr />
+        <a href="/"><button class="btn btn-primary btn-large input-block-level">看看別的</button></a>
+    </div>
+</div>
+{% endblock %}
+

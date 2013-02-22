@@ -1,5 +1,4 @@
 {% extends "gallery/base.html" %}
-{% load staticfiles %}
 
 {% block page_title %}{% if photo.title %}{{ photo.title }} - {% endif %}{% endblock %}{{ AURORA_SITE_NAME }}
 
@@ -18,6 +17,13 @@
           {% for tag in photo.tags.all %}
               <button class="btn">{{ tag.title }}</button>
           {% endfor %}
+      </div>
+      {% endif %}
+      {% if photo.postcard %}
+      <div class="btn-group pull-right" id="tags">
+          <a href="/postcard/{{ photo.id }}">
+              <button class="btn btn-info">索取明信片</button>
+          </a>
       </div>
       {% endif %}
     </div>

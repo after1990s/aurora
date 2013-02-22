@@ -11,6 +11,7 @@ urlpatterns = patterns('gallery',
 
     url(r'^$', 'views.homepage'),
     url(r'^photo/(?P<photo_id>\d+)$', 'views.single'),
+    url(r'^postcard/(?P<photo_id>\d+)$', 'views.postcard'),
 
     url(r'^api/homepage_list/(?P<page>\d+)$', 'views.homepage_imagelist'),
 )

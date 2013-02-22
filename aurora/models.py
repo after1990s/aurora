@@ -25,6 +25,8 @@ class Photo(models.Model):
     height      = models.IntegerField(default=0)
     width       = models.IntegerField(default=0)
 
+    postcard    = models.IntegerField(default=0)
+
     class Meta:
         ordering = ["-id"]
 
