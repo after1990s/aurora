@@ -21,4 +21,6 @@ def site(request):
             'AURORA_FOOTER': settings.AURORA_FOOTER,
             'AURORA_GA_POTD': settings.AURORA_GA_POTD,
             'AURORA_GA_GALLERY': settings.AURORA_GA_GALLERY,
+            'AURORA_DISQUS_SHORTNAME': settings.AURORA_DISQUS_SHORTNAME,
+            'AURORA_TWITTER_VIA': settings.AURORA_TWITTER_VIA,
            }
