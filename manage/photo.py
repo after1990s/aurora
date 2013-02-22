@@ -56,7 +56,7 @@ def photo_add(request):
             p.extension = os.path.splitext(form.cleaned_data['photo'].name)[1][1:]
             p.save()
 
-            p.set_tags(request.POST('tags'))
+            p.set_tags(request.POST.getlist('tags'))
 
             create_new_photo_storage(photo=p, 
                 f=request.FILES['photo'])
