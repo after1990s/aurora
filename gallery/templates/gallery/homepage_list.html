@@ -1,0 +1,7 @@
+{% for photo in photos %}
+<li>
+    <a href="{{ AURORA_GALLERY_URL }}photo/{{ photo.id }}">
+        <p><img src="{{ AURORA_MEDIA_PUB_URL }}{{ photo.hush }}.{{ photo.extension }}{{ AURORA_POSTFIX_GALLERY_THUMB }}" style="width: {{ AURORA_THUMB_WIDTH }}px; height: {{ photo.thumb_height }}px;"{% if photo.title %} title="{{ photo.title|truncatechars:100 }}"{% endif %}></img></p>
+    </a>
+</li>
+{% endfor %}
