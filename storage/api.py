@@ -13,6 +13,7 @@ from PIL import Image
 import os
 
 def create_new_photo_storage(photo, f):
+    photo.extension = photo.extension.lower()
     dir_ = '%s/%s' % (settings.MEDIA_ROOT, photo.id)
     path_ = '%s/%s.%s' % (settings.MEDIA_ROOT, photo.id, photo.extension)
     if not os.path.isdir(dir_):
@@ -39,10 +40,10 @@ def make_symlink_photo(photo):
     dir_ = '%s' % (settings.AURORA_MEDIA_PUB_ROOT)
     photo_path = '%s/%s.%s' % (settings.AURORA_MEDIA_ROOT_REF, 
                                   photo.id, 
-                                  photo.extension)
+                                  photo.extension.lower())
     symlink_path = '%s/%s.%s' % (settings.AURORA_MEDIA_PUB_ROOT, 
                                  photo.hush, 
-                                 photo.extension)
+                                 photo.extension.lower())
     if not os.path.isdir(dir_):
         os.makedirs(dir_)
 
