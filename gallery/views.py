@@ -6,7 +6,7 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.conf import settings
-from django.http import Http404
+from django.http import Http404, HttpResponse
 
 from aurora.models import Photo
 from postcard.models import PostcardRequest
@@ -25,7 +25,7 @@ def homepage_imagelist(request, page):
     try:
         photos = p.page(page)
     except:
-        raise Http404
+        return HttpResponse('')
 
     return render(request, 'gallery/homepage_list.html', {
             'photos': photos,

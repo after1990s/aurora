@@ -33,14 +33,16 @@ $(document).ready(new function() {
                 aurora.page ++;
                 if(aurora.endless) {
                     $.ajax('/api/homepage_list/' + aurora.page).done(function (data) {
-                        aurora.ready = true;
-                        aurora.content = data;
-                        if ($(window).scrollTop() >= $(document).height() - $(window).height() - 1000){
-                            aurora.loadmore();
+                        if(!(data.length)){
+                            aurora.endless = false;
+                            aurora.endless = false;
+                        } else {
+                            aurora.ready = true;
+                            aurora.content = data;
+                            if ($(window).scrollTop() >= $(document).height() - $(window).height() - 1000){
+                                aurora.loadmore();
+                            }
                         }
-                    }).fail(function (){
-                        aurora.endless = false;
-                        aurora.ready = false;
                     });
                 }
             }
